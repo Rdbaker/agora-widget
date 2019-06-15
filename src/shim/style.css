@@ -1,0 +1,41 @@
+#agora-container > iframe.agora-iframe-takeover {
+  width: 100vw;
+  height: 100vh;
+  display: initial;
+  top: 0;
+  left: 0;
+}
+
+#agora-container > iframe.agora-iframe-sidebar {
+  min-width: 240px;
+  width: 30%;
+  height: 100vh;
+  display: initial;
+  top: 0;
+  right: 0;
+}
+
+#agora-container > iframe.agora-iframe-chat-button {
+  width: initial;
+  height: 100px;
+  width: 100px;
+  display: initial;
+  bottom: 20px;
+  right: 20px;
+}
+
+#agora-container > iframe.agora-iframe-info-msg {
+  width: initial;
+  height: 70px;
+  display: initial;
+  bottom: 20px;
+  left: 20px;
+}
+
+#agora-container > iframe {
+  position: fixed;
+  width: 0;
+  height: 0;
+  display: none;
+  border: none;
+}

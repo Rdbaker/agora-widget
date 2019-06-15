@@ -1,0 +1,3 @@
+import SingleConversationComponent from 'components/SingleConversation'
+
+export default SingleConversationComponent

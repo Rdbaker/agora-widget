@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Getting Started</title>
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body style="font-family: 'Nunito', sans-serif;">
+    <h1>this is my cool webpage</h1>
+    <script>
+      (function(window, document) {
+        if (window.agora) console.error('Agora embed already included');
+        window.agora = {}, m = ['init', 'getCurrentUser', 'debug']; window.agora._c = [];
+        m.forEach(me => window.agora[me] = function() {window.agora._c.push([me, arguments])});
+        var elt = document.createElement('script');
+        elt.type = "text/javascript"; elt.async = true;
+        elt.src = "shim.js";
+        var before = document.getElementsByTagName('script')[0];
+        before.parentNode.insertBefore(elt, before);
+      })(window, document, undefined);
+      agora.init('ZZENpaTsPgun');
+      //agora.onload = function(api) {
+      //  api.getCurrentUser().then(console.table);
+      //};
+  </script>
+  </body>
+</html>

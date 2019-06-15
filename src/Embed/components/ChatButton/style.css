@@ -1,0 +1,17 @@
+.agora-chat-button-container:hover {
+  background: rgb(180, 194, 250);
+  box-shadow: 0 0 2px 4px rgba(88, 88, 88, 0.5);
+}
+
+
+.agora-chat-button-container {
+  height: 60px;
+  width: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  background: rgb(163, 179, 245);
+  box-shadow: 0 0 2px 2px rgba(88, 88, 88, 0.5);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
