@@ -13,10 +13,12 @@ import orgReducer from 'modules/org/reducer';
 import uiReducer from 'modules/ui/reducer';
 import shimReducer from 'modules/shim/reducer';
 import userReducer from 'modules/user/reducer';
+import messageReducer from 'modules/messages/reducer';
 import uiEpic from 'modules/ui/epics';
 import authEpic from 'modules/auth/epics';
 import shimEpic from 'modules/shim/epics';
 import orgEpic from 'modules/org/epics';
+import messageEpic from 'modules/messages/epics';
 import { DEBUG } from 'shared/resources';
 
 document.domain = 'agora.co';
@@ -31,7 +33,7 @@ setTimeout(mountSentry, 0);
 const epicMiddleware = createEpicMiddleware();
 const loggingMiddleware = store => next => action => {
   if (DEBUG || store.getState().shim.debug) {
-    console.info('[Weasl] applying action', action);
+    console.info('[Agora] applying action', action);
   }
   next(action);
 }
@@ -43,6 +45,7 @@ const store = createStore(
     org: orgReducer,
     shim: shimReducer,
     user: userReducer,
+    messages: messageReducer,
   }),
   compose(
     applyMiddleware(loggingMiddleware),
@@ -61,6 +64,7 @@ epicMiddleware.run(
     shimEpic,
     authEpic,
     orgEpic,
+    messageEpic,
   )
 )
 

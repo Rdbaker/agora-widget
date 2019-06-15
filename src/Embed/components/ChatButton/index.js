@@ -3,9 +3,10 @@ import React from 'react';
 import './style.css';
 
 const ChatButton = ({
-  onClick,
+  openChat,
+  conversationId,
 }) => (
-  <div onClick={onClick} className="agora-chat-button-container">
+  <div onClick={() => openChat(conversationId)} className="agora-chat-button-container">
   </div>
 );
 

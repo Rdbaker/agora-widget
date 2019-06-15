@@ -20,7 +20,7 @@ const hideDuringTransitionEpic = (action$, store) => action$.pipe(
 
 const showAfterTransitionEpic = action$ => action$.pipe(
   ofType(SharedActionTypes.CHANGE_CONTAINER_CLASS_DONE),
-  delay(800),
+  delay(120),
   mapTo(UIActions.showUI())
 )
 

@@ -10,8 +10,10 @@ export const AuthAPI = {
         'X-Agora-Client-Id': window.clientId,
       },
       body: JSON.stringify({
-        username,
-        password,
+        end_user: {
+          username,
+          password,
+        }
       })
     })
   },
@@ -24,8 +26,10 @@ export const AuthAPI = {
         'X-Agora-Client-Id': window.clientId,
       },
       body: JSON.stringify({
-        username,
-        password,
+        end_user: {
+          username,
+          password,
+        }
       })
     })
   },

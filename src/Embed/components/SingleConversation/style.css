@@ -1,0 +1,23 @@
+.agora-sidebar--container {
+  box-shadow: -2px 0px 4px 0px #bbb;
+  width: 95%;
+  margin: 0 0 0 auto;
+  height: 100%;
+  overflow: auto;
+  opacity: 0;
+  position: relative;
+  right: -300px;
+  animation: slideout 0.3s ease 0.1s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideout {
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.agora-sidebar--container > * {
+  padding: 8px;
+}

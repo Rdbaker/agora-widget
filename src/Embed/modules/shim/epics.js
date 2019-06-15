@@ -11,6 +11,7 @@ import { ActionTypes as OrgActionTypes } from 'modules/org/constants';
 import * as ShimActions from 'modules/shim/actions';
 import *  as SharedEventTypes from 'shared/eventTypes';
 import { CHAT_BUTTON_CLASSNAME } from 'shared/iframeClasses';
+import { getCookie } from 'shared/helpers';
 
 
 const startWidgetBootstrap = (action$) => action$.pipe(
@@ -19,7 +20,7 @@ const startWidgetBootstrap = (action$) => action$.pipe(
     global.clientId = payload.clientId;
     return [
       OrgActions.fetchPublicOrg({ clientId: payload.clientId }),
-      ShimActions.fetchCurrentUser(payload.jwt),
+      ShimActions.fetchCurrentUser(getCookie()),
     ];
   }),
 );
