@@ -1,4 +1,5 @@
 import { API_URL } from 'shared/resources';
+import { getCookie } from 'shared/helpers';
 
 
 export const MessagesAPI = {
@@ -15,4 +16,16 @@ export const MessagesAPI = {
       },
     })
   },
+
+  sendMessage(conversationId, message) {
+    return fetch(`${API_URL}/widget/conversations/${conversationId}/messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Agora-Client-Id': window.clientId,
+        'Authorization': `Bearer ${getCookie()}`,
+      },
+      body: JSON.stringify({ message })
+    });
+  }
 }

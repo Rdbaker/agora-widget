@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Composer from 'containers/Composer';
+
 import './style.css';
 
 
@@ -22,7 +24,9 @@ class SingleConversation extends Component {
         <div className="agora-single-conversation-messages--container">
           {messages.map(message => <div>{message.body}</div>)}
         </div>
-        <div className="agora-single-conversation-composer--container"></div>
+        <div className="agora-single-conversation-composer--container">
+          <Composer />
+        </div>
       </div>
     )
   }
