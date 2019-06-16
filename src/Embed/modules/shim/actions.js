@@ -11,11 +11,6 @@ export const setCookie = (payload) => ({
   payload,
 });
 
-export const startAuthFlow = (payload) => ({
-  type: SharedEventTypes.START_AUTH_FLOW,
-  payload,
-});
-
 export const fetchCurrentUser = payload => ({
   type: SharedEventTypes.GET_CURRENT_USER_VIA_JWT,
   payload,

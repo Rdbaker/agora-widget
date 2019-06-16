@@ -22,7 +22,7 @@ export const setCookie = ({ token }) => {
   const expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + 7);
 
-  const cookie = `${COOKIE_NAME}=${token};expires=${expireDate.toGMTString()};domain=.${window.location.host}`;
+  const cookie = `${COOKIE_NAME}=${token};expires=${expireDate.toGMTString()};`;
   document.cookie = cookie;
 };
 

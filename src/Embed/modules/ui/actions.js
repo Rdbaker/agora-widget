@@ -11,7 +11,7 @@ export const showUI = () => ({
 
 export const changeContainerClass = (classnames) => ({
   type: SharedActionTypes.CHANGE_CONTAINER_CLASS,
-  classnames,
+  payload: classnames,
 });
 
 export const setView = ({ view }) => ({

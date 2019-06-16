@@ -5907,6 +5907,11 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
+phoenix@^1.4.8:
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/phoenix/-/phoenix-1.4.8.tgz#dffb319ffa17613d98a032d82a9dfeabd1e0cac6"
+  integrity sha512-WH20Lv/P/zz49HKoQmGyRtcckYf91ivK+dvLehgeN5cxP9DgJufgg/4fPgBnrd7OY/Q9aSSxJvMMrwyG4tEPbw==
+
 pify@^2.0.0, pify@^2.2.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"

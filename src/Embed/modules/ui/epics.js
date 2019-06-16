@@ -9,13 +9,10 @@ import * as UIActions from 'modules/ui/actions';
 const hideDuringTransitionEpic = (action$, store) => action$.pipe(
   ofType(SharedActionTypes.CHANGE_CONTAINER_CLASS),
   filter(action => path(['value', 'ui', 'lastSentContainerClass'], store) !== action.classnames),
-  switchMap(({ classnames }) => {
-    window.parent.postMessage({ type: SharedActionTypes.CHANGE_CONTAINER_CLASS, value: classnames}, '*');
-    return [
-      UIActions.hideUI(),
-      UIActions.setLastSentContainerClass(classnames),
-    ];
-  }),
+  switchMap(({ classnames }) => ([
+    UIActions.hideUI(),
+    UIActions.setLastSentContainerClass(classnames),
+  ]))
 )
 
 const showAfterTransitionEpic = action$ => action$.pipe(
