@@ -2,6 +2,7 @@ import { ofType, combineEpics } from 'redux-observable';
 import { mergeMap, first } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
 
+import * as SocketActions from 'modules/socket/actions';
 import * as UIActions from 'modules/ui/actions';
 import { IframeViews } from 'modules/ui/constants';
 import * as OrgActions from 'modules/org/actions';
@@ -42,11 +43,14 @@ const bootstrapping = action$ => action$.pipe(
     ])
     .pipe(
       first(),
-      mergeMap(() => ([
-        { type: SharedEventTypes.BOOTSTRAP_DONE },
-        UIActions.changeContainerClass(CHAT_BUTTON_CLASSNAME),
-        UIActions.setViewAndType({ view: IframeViews.CHAT_BUTTON, type: undefined })
-      ]))
+      mergeMap(([{ payload: { conversations } }, _]) => {
+        return [
+          { type: SharedEventTypes.BOOTSTRAP_DONE },
+          UIActions.changeContainerClass(CHAT_BUTTON_CLASSNAME),
+          UIActions.setViewAndType({ view: IframeViews.CHAT_BUTTON, type: undefined }),
+          SocketActions.joinChannel({ channelName: `conversation:${conversations[0].id}` })
+        ];
+      })
     );
   }),
 )

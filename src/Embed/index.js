@@ -24,10 +24,9 @@ import shimEpic from 'modules/shim/epics';
 import orgEpic from 'modules/org/epics';
 import messageEpic from 'modules/messages/epics';
 import userEpic from 'modules/user/epics';
+import socketEpic from 'modules/socket/epics';
 
 import { DEBUG } from 'shared/resources';
-
-import 'modules/socket';
 
 document.domain = 'agora.co';
 
@@ -75,6 +74,7 @@ epicMiddleware.run(
     orgEpic,
     messageEpic,
     userEpic,
+    socketEpic,
   )
 )
 
