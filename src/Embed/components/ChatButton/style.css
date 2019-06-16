@@ -1,17 +1,34 @@
 .agora-chat-button-container:hover {
-  background: rgb(180, 194, 250);
-  box-shadow: 0 0 2px 4px rgba(88, 88, 88, 0.5);
+  box-shadow: 0 0 2px 4px rgba(200, 200, 200, 0.5);
 }
 
 
 .agora-chat-button-container {
-  height: 60px;
-  width: 60px;
-  margin-top: 20px;
-  margin-left: 20px;
+  height: 40px;
+  width: 40px;
+  margin-top: 30px;
+  margin-left: 30px;
   background: rgb(163, 179, 245);
-  box-shadow: 0 0 2px 2px rgba(88, 88, 88, 0.5);
+  box-shadow: 0 0 2px 2px rgba(200, 200, 200, 0.5);
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.5s ease;
+  animation: grow 0.3s ease 0s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes grow {
+  60% {
+    height: 65px;
+    width: 65px;
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+
+  100% {
+    height: 60px;
+    width: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
 }

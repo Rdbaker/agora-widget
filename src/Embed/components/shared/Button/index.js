@@ -8,8 +8,14 @@ export default ({
   className="",
   children,
   onClick,
+  submit=true,
 }) => (
-  <div className={`partnr-button partnr-button-${type} partnr-button-${size} ${className}`} onClick={onClick}>
+  type === "link" ?
+  <a className={`agora-button agora-button-${type} agora-button-${size} ${className}`} onClick={onClick}>
     {children}
-  </div>
+  </a>
+  :
+  <button type={submit ? 'submit' : 'button'} className={`agora-button agora-button-${type} agora-button-${size} ${className}`} onClick={onClick}>
+    {children}
+  </button>
 );

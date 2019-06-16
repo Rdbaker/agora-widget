@@ -22,10 +22,24 @@ const login = action$ => action$.pipe(
   )
 )
 
-const setJWTCookie = action$ => action$.pipe(
-  ofType(ActionTypes.LOGIN_SUCCESS),
+const signup = action$ => action$.pipe(
+  ofType(ActionTypes.SIGNUP),
   pluck('payload'),
-  tap(({ token }) => setCookie(token)),
+  flatMap(({ username, password }) =>
+    from(AuthAPI.signUp(username, password))
+      .pipe(
+        flatMap(response => from(response.json())),
+        flatMap(({ token }) => of(AuthActions.signupSuccess({ token }))),
+        catchError(err => of(AuthActions.signupFailed({ err }))),
+        startWith(AuthActions.signupPending())
+      )
+  )
+)
+
+const setJWTCookie = action$ => action$.pipe(
+  ofType(ActionTypes.LOGIN_SUCCESS, ActionTypes.SIGNUP_SUCCESS),
+  pluck('payload'),
+  tap((token) => setCookie(token)),
   ignoreElements(),
 )
 
@@ -33,4 +47,5 @@ const setJWTCookie = action$ => action$.pipe(
 export default combineEpics(
   login,
   setJWTCookie,
+  signup,
 )

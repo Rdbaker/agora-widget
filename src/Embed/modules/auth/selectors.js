@@ -1,12 +1,9 @@
 import { ActionTypes } from './constants';
 
 
-const authRoot = state => state.auth || {};
+const root = state => state.auth || {};
 
-export const getLoggedInOnInitGuess = state => state.loggedInOnInitGuess;
+const jwt = state => root(state).jwt;
 
-const verifyToken = state => authRoot(state).verifyToken
-const verifyTokenStatus = state => verifyToken(state).status
-export const verifyTokenPending = state => verifyTokenStatus(state) === ActionTypes.fetchVerifySMSTokenPending;
-export const verifyTokenSuccess = state => verifyTokenStatus(state) === ActionTypes.fetchVerifySMSTokenSuccess;
-export const verifyTokenFailed = state => verifyTokenStatus(state) === ActionTypes.fetchVerifySMSTokenFailed;
+export const authError = state => jwt(state).error
+export const loginOrSignupFailed = state => [ActionTypes.SIGNUP_FAILED, ActionTypes.LOGIN_FAILED].indexOf(jwt(state).status) !== -1

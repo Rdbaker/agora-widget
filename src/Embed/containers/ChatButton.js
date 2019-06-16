@@ -8,12 +8,12 @@ import { SIDEBAR_CLASSNAME } from 'shared/iframeClasses';
 
 const mapDispatchToProps = dispatch => ({
   openChat: (conversationId) => {
+    dispatch(changeContainerClass(SIDEBAR_CLASSNAME))
     dispatch(setViewTypeAndMeta({
       view: IframeViews.SIDEBAR,
       type: IframeViewTypes.SINGLE_CONVERSATION,
       meta: { conversationId },
     }))
-    dispatch(changeContainerClass(SIDEBAR_CLASSNAME))
   }
 })
 

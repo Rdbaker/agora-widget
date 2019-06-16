@@ -1,4 +1,5 @@
 import { API_URL } from 'shared/resources';
+import { checkStatus } from 'utils/api';
 
 
 export const AuthAPI = {
@@ -16,6 +17,7 @@ export const AuthAPI = {
         }
       })
     })
+    .then(checkStatus)
   },
 
   login(username, password) {
@@ -32,5 +34,6 @@ export const AuthAPI = {
         }
       })
     })
+    .then(checkStatus)
   },
 }

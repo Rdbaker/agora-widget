@@ -15,5 +15,6 @@ export const IframeViews = {
 }
 
 export const IframeViewTypes = {
+  NONE: 'NONE',
   SINGLE_CONVERSATION: 'SINGLE_CONVERSATION',
 }

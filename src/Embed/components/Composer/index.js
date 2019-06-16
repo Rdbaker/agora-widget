@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 
+import './style.css'
+
 class Composer extends Component {
   constructor(props) {
     super(props);
@@ -41,7 +43,9 @@ class Composer extends Component {
     } = this.state;
 
     return (
-      <input onChange={this.handleChange} onKeyDown={this.maybeSubmit} value={inputValue} />
+      <div className="agora-chat-composer">
+        <input placeholder="Say hello..." onChange={this.handleChange} onKeyDown={this.maybeSubmit} value={inputValue} />
+      </div>
     )
   }
 }
