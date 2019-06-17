@@ -15,14 +15,14 @@ import boto3
 from constants import Constants
 
 logging.basicConfig(format='%(name)-12s: %(levelname)-8s:%(message)s', level=logging.INFO)
-deploy_logger = logging.getLogger('weasl.uploader')
+deploy_logger = logging.getLogger('agora.uploader')
 
 S3 = boto3.resource('s3')
 
 
 def upload_arg_parser():
     parser = argparse.ArgumentParser(
-        description='Upload weasl embed static files.',
+        description='Upload agora embed static files.',
     )
     parser.add_argument('--environment', help='The bucket to upload the files to.', required=True,
         choices=['production', 'development'])
@@ -61,7 +61,7 @@ def upload_files(bucket):
         reldir = os.path.relpath('.', Constants.DIST_DIR)
         relfile = os.path.join(reldir, fname)
         # boto3 doesn't like relative files
-        uploadfile = 'embed/{}'.format(os.path.relpath(fname, os.path.dirname(os.path.abspath(__file__)) + '/tmp/widget/dist'))
+        uploadfile = 'embed/{}'.format(os.path.relpath(fname, os.path.dirname(os.path.abspath(__file__)) + '/tmp/agora-widget/dist'))
         # get the file extension
         _, file_extension = os.path.splitext(relfile)
         extra_args = { 'ACL':'public-read', 'ContentType': get_content_type_from_ext(file_extension) }

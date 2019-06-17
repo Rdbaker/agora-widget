@@ -15,4 +15,15 @@ export const EndUserAPI = {
     })
     .then(checkStatus)
   },
+
+  bulkGet(ids) {
+    return fetch(`${API_URL}/widget/end_users?${ids.map(id => `ids[]=${id}&`).join('')}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Agora-Client-Id': window.clientId,
+      },
+    })
+    .then(checkStatus)
+  }
 }

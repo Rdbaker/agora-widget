@@ -10,13 +10,13 @@ import os
 
 class Constants(object):
     BUCKETS = {
-        'development': 'weasl-dev',
-        'production': 'weasl-prod',
+        'development': 'agora-widget-dev',
+        'production': 'agora-widget-prod',
     }
     AUTHOR = getpass.getuser()
-    REPO_SSH = 'git@bitbucket.org:weasl/widget.git'
+    REPO_SSH = 'git@github.com:Rdbaker/agora-widget.git'
     TMP_DIR = os.path.join(os.getcwd(), 'tmp')
-    REPO_DIR = os.path.join(TMP_DIR, 'widget')
+    REPO_DIR = os.path.join(TMP_DIR, 'agora-widget')
     DIST_DIR = os.path.join(REPO_DIR, 'dist')
     COMMANDS = {
         'install': 'yarn install'.split(),
@@ -35,6 +35,7 @@ class Constants(object):
         '.ttf':   'application/x-font-woff',
         '.css':   'text/css',
         '.gif':   'image/gif',
+        '.svg':   'image/svg+xml',
     }
 
     @classmethod

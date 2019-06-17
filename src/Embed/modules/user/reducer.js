@@ -9,6 +9,7 @@ const defaultState = {
     status: null,
     lastFetched: null,
   },
+  byId: {},
 };
 
 export default (state = defaultState, action) => {
