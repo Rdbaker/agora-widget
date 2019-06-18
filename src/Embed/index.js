@@ -28,7 +28,7 @@ import socketEpic from 'modules/socket/epics';
 
 import { DEBUG } from 'shared/resources';
 
-document.domain = 'agora.co';
+document.domain = 'agorachat.org';
 
 library.add(faCheck, faLock);
 
