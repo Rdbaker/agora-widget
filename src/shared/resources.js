@@ -2,18 +2,18 @@ let ResourcesConstants;
 
 if (ENVIRONMENT === 'production') {
   ResourcesConstants = {
-    WS_URL: 'wss://lcl.agora.co:4000',
-    API_URL: 'https://api.weasl.in',
-    IFRAME_URL: 'https://js.weasl.in/embed/index.html',
-    WWW_URL: 'https://www.weasl.in',
-    APP_URL: 'https://app.weasl.in',
+    WS_URL: 'wss://agorachatapi.herokuapp.com',
+    API_URL: 'https://agorachatapi.herokuapp.com',
+    IFRAME_URL: 'https://js.agorachat.org/embed/index.html',
+    WWW_URL: 'https://www.agorachat.org',
+    APP_URL: 'https://app.agorachat.org',
   }
 } else {
   ResourcesConstants = {
-    WS_URL: 'ws://lcl.agora.co:4000',
-    API_URL: 'http://lcl.agora.co:4000',
-    IFRAME_URL: 'http://lcl.agora.co:9001/index-embed.html',
-    WWW_URL: 'https://lcl.agora.in:4000',
+    WS_URL: 'ws://lcl.agorachat.org:4000',
+    API_URL: 'http://lcl.agorachat.org:4000',
+    IFRAME_URL: 'http://lcl.agorachat.org:9001/index-embed.html',
+    WWW_URL: 'https://lcl.agorachat.org:4000',
     APP_URL: 'http://localhost:3000',
   }
 }
