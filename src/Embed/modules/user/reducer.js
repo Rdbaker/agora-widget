@@ -1,6 +1,8 @@
+import produce from 'immer';
 import { merge } from 'ramda';
 
 import *  as SharedEventTypes from 'shared/eventTypes';
+import { ActionTypes } from './constants';
 
 
 const defaultState = {
@@ -11,6 +13,13 @@ const defaultState = {
   },
   byId: {},
 };
+
+const receiveBulkUsers = (newState, users) => {
+  users.forEach(user => {
+    newState.byId[user.id] = user;
+  });
+  return newState;
+}
 
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -29,6 +38,8 @@ export default (state = defaultState, action) => {
         state,
         { currentUser: merge(state.currentUser, { status: action.type, data: action.payload })},
       );
+    case ActionTypes.BULK_GET_END_USERS_SUCESS:
+      return produce(state, draftState => receiveBulkUsers(draftState, action.payload));
     default:
       return state;
   }

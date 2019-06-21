@@ -4,42 +4,47 @@ import { ActionTypes } from 'modules/messages/constants';
 
 
 const defaultState = {
-  byConversationId: {},
+  idsByConversationId: {},
+  byId: {},
 };
 
 const fetchMessagesPending = (newState, { conversationId }) => {
-  const alreadyHasMessageInState = !!newState.byConversationId[conversationId];
+  const alreadyHasMessageInState = !!newState.idsByConversationId[conversationId];
   if (!alreadyHasMessageInState) {
-    newState.byConversationId[conversationId] = {
+    newState.idsByConversationId[conversationId] = {
       status: ActionTypes.FETCH_MESSAGES_PENDING,
-      data: [],
+      data: new Set(),
     };
   } else {
-    newState.byConversationId[conversationId].status = ActionTypes.FETCH_MESSAGES_PENDING;
+    newState.idsByConversationId[conversationId].status = ActionTypes.FETCH_MESSAGES_PENDING;
   }
   return newState;
 }
 
 const fetchMessagesSuccess = (newState, { conversationId, messages }) => {
-  const conversationMessages = newState.byConversationId[conversationId].data
-  newState.byConversationId[conversationId].data = [...conversationMessages, ...messages.reverse()];
-  newState.byConversationId[conversationId].status = ActionTypes.FETCH_MESSAGES_SUCCESS;
+  const idsForConversation = newState.idsByConversationId[conversationId].data;
+  messages.forEach(message => idsForConversation.add(message.id));
+  messages.forEach(message => newState.byId[message.id] = message);
+  newState.idsByConversationId[conversationId].status = ActionTypes.FETCH_MESSAGES_SUCCESS;
 
   return newState;
 }
 
 const receiveMessage = (newState, message) => {
   const conversationId = message.conversation_id;
-  const alreadyHasMessageInState = !!newState.byConversationId[conversationId];
+  const alreadyHasMessageInState = !!newState.idsByConversationId[conversationId];
   if (!alreadyHasMessageInState) {
-    newState.byConversationId[conversationId] = {
+    const data = new Set();
+    data.add(message.id);
+    newState.idsByConversationId[conversationId] = {
       status: ActionTypes.RECEIVE_MESSAGE,
-      data: [message],
+      data,
     };
+    newState.byId[message.id] = message
   } else {
-    const conversationMessages = newState.byConversationId[conversationId].data
-    newState.byConversationId[conversationId].data = [...conversationMessages, message];
-    newState.byConversationId[conversationId].status = ActionTypes.RECEIVE_MESSAGE;
+    newState.idsByConversationId[conversationId].data.add(message.id);
+    newState.idsByConversationId[conversationId].status = ActionTypes.RECEIVE_MESSAGE;
+    newState.byId[message.id] = message;
   }
 
   return newState;

@@ -1,5 +1,12 @@
-const root = state => state.user
+const root = state => state.user;
 
-const currentUser = state => root(state).currentUser
+const defaultUser = {
+  username: 'Member',
+  id: 0,
+}
 
-export const isLoggedIn = state => !!currentUser(state).data
+const currentUser = state => root(state).currentUser;
+const byIdRoot = state => root(state).byId;
+
+export const isLoggedIn = state => !!currentUser(state).data;
+export const getUser = (state, userId) => byIdRoot(state)[userId] || defaultUser

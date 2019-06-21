@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Button from 'components/shared/Button';
 import Composer from 'containers/Composer';
 import Header from 'containers/Header';
+import Message from 'containers/Message';
 
 import './style.css';
 
@@ -69,14 +70,14 @@ class SingleConversation extends Component {
 
   renderConversation = () => {
     const {
-      messages,
+      messageIds,
       isLoggedIn,
     } = this.props;
 
     return (
       <Fragment>
         <div className="agora-single-conversation-messages--container">
-          {messages.map(message => <div>{message.body}</div>)}
+          {messageIds.map(messageId => <Message id={messageId} key={messageId} />)}
         </div>
         <div className="agora-single-conversation-composer--container">
           {isLoggedIn && <Composer />}

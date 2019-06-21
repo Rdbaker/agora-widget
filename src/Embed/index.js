@@ -58,7 +58,7 @@ const store = createStore(
     applyMiddleware(loggingMiddleware),
     applyMiddleware(epicMiddleware),
     applyMiddleware(postMessageMiddleware),
-    // DEBUG && typeof window.__REDUX_DEVTOOLS_EXTENSION__ === 'function' && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    DEBUG && typeof window.__REDUX_DEVTOOLS_EXTENSION__ === 'function' && window.__REDUX_DEVTOOLS_EXTENSION__(),
   ),
 );
 
