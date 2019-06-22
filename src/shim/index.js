@@ -107,13 +107,21 @@ class Agora {
     this.domainAllowed = false;
   }
 
+  getUserContext = () => {
+    return {
+      pageURL: window.location.href,
+      pageTitle: document.title,
+      referrer: document.referrer,
+    }
+  }
+
   initializeIframe = () => {
     if (!document.getElementById(IFRAME_ID)) {
       const iframe = document.createElement('iframe');
       iframe.onload = () => {
         this.iframe.contentWindow.postMessage({ type: EventTypes.INIT_IFRAME, value: {
           clientId: this.clientId,
-          topHost: window.location.host,
+          userContext: this.getUserContext(),
         }}, '*');
       }
       iframe.src = IFRAME_URL

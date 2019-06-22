@@ -8,16 +8,14 @@ const defaultState = {
   clientId: null,
   debug: false,
   allowedDomain: null,
-  hostDomain: null,
+  userContext: {},
 }
 
 
 export default (state = defaultState, action) => {
   switch (action.type) {
     case SharedEventTypes.INIT_IFRAME:
-      const hostParts = action.payload.topHost.split(':')[0].split('.')
-      const topLevelHost = hostParts.length > 1 ? hostParts.slice(1).join('.') : hostParts[0]
-      return merge(state, { clientId: action.payload.clientId, hostDomain: topLevelHost });
+      return merge(state, { clientId: action.payload.clientId, userContext: action.payload.userContext });
     case SharedEventTypes.SET_DEBUG_MODE:
       return merge(state, { debug: action.payload });
     case ActionTypes.verifyDomainFailed:

@@ -23,10 +23,10 @@ const fetchMessages = action$ => action$.pipe(
 )
 
 
-const sendMessage = action$ => action$.pipe(
+const sendMessage = (action$, store$) => action$.pipe(
   ofType(ActionTypes.SEND_MESSAGE),
   pluck('payload'),
-  map(createBeforeServerMessage),
+  map(msg => createBeforeServerMessage(msg, store$.value.shim.userContext)),
   flatMap((message) =>
     from(MessagesAPI.sendMessage(message.conversation_id, message))
       .pipe(

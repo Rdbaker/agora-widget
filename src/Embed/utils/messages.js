@@ -4,15 +4,13 @@ export const createBeforeServerMessage = ({
   user_context = {},
   event = {},
   ...rest
-}) => ({
+}, extraUserContext = {}) => ({
   conversation_id: conversationId,
   event,
   user_context: {
-    pageURL: window.location.href,
-    pageTitle: document.title,
-    referrer: document.referrer,
     userAgent: navigator.userAgent,
     languages: navigator.languages,
+    ...extraUserContext,
     ...user_context,
   },
   attributes: {
