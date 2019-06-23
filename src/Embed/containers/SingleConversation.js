@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { uiMeta } from 'modules/ui/selectors';
-import { messagesNeverFetched, conversationMessageIds } from 'modules/messages/selectors';
+import { messagesNeverFetched, getMessageGroups } from 'modules/messages/selectors';
 import { isLoggedIn } from 'modules/user/selectors';
 import { loginOrSignupFailed, authError } from 'modules/auth/selectors';
 import { fetchMessages } from 'modules/messages/actions';
@@ -15,10 +15,10 @@ const mapStateToProps = state => {
   return {
     conversationId,
     messagesNeverFetched: messagesNeverFetched(state, conversationId),
-    messageIds: conversationMessageIds(state, conversationId),
     isLoggedIn: isLoggedIn(state),
     loginOrSignupFailed: loginOrSignupFailed(state),
     authError: authError(state),
+    messageGroups: getMessageGroups(state, conversationId),
   }
 }
 

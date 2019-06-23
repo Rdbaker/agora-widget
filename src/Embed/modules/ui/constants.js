@@ -6,6 +6,7 @@ export const ActionTypes = {
   setViewAndType: 'SET_VIEW_AND_TYPE',
   setViewTypeAndMeta: 'SET_VIEW_TYPE_AND_META',
   setLastSentContainerClass: 'SET_LAST_SENT_CONTAINER_CLASS',
+  setTypeAndMeta: 'SET_TYPE_AND_META',
 }
 
 export const IframeViews = {
@@ -17,4 +18,5 @@ export const IframeViews = {
 export const IframeViewTypes = {
   NONE: 'NONE',
   SINGLE_CONVERSATION: 'SINGLE_CONVERSATION',
+  AUTHOR_INFO: 'AUTHOR_INFO',
 }

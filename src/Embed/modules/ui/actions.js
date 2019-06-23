@@ -43,3 +43,11 @@ export const setLastSentContainerClass = (classname) => ({
   type: ActionTypes.setLastSentContainerClass,
   classname,
 });
+
+export const setTypeAndMeta = ({ type, meta }) => ({
+  type: ActionTypes.setTypeAndMeta,
+  payload: {
+    viewType: type,
+    meta,
+  }
+})

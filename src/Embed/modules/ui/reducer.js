@@ -24,6 +24,8 @@ export default (state = defaultState, action) => {
       return merge(state, { type: action.viewType });
     case UIActionTypes.setViewTypeAndMeta:
       return merge(state, { type: action.payload.viewType, view: action.payload.view, meta: action.payload.meta });
+    case UIActionTypes.setTypeAndMeta:
+      return merge(state, { type: action.payload.viewType, meta: action.payload.meta });
     case UIActionTypes.setViewAndType:
       return merge(state, { type: action.viewType, view: action.view });
     case UIActionTypes.setLastSentContainerClass:

@@ -1,0 +1,60 @@
+.agora-author-info--container {
+  height: calc(100% - 68px);
+  overflow: auto;
+}
+
+.agora-author-info-header--container {
+  height: 35px;
+  box-shadow: 0 2px 6px -2px rgb(214, 223, 232);
+}
+
+.author-info-section--content {
+  padding: 0 18px;
+}
+
+.author-info-section--title {
+  padding: 18px 18px 6px 18px;
+  margin: 0 0 12px 0;
+  border-bottom: 1px solid #999;
+}
+
+.author-info-section--container {
+  border: 1px solid lightsteelblue;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 0px rgba(66, 66, 122, 0.35);
+  margin-top: 18px;
+}
+
+.author-info-piece--container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #999;
+  font-size: 10px;
+  border-radius: 4px;
+  margin: 6px 0;
+}
+
+.author-info-piece--name {
+  min-width: 60px;
+  border-right: 1px solid #666;
+  padding: 6px;
+  margin: 0 6px 0 0;
+  background: #f7f7f7;
+  color: #4e4e4e;
+}
+
+.agora-author-info--map {
+  height: 150px;
+  width: 90%;
+  overflow: hidden;
+  outline: none;
+  margin: 18px auto;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.agora-author-info--back {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
