@@ -27,7 +27,7 @@ class ChatButton extends Component {
 
     return (
       <div onClick={this.transition} className={cx("agora-chat-button-container", { transition: isTransitioning })}>
-        <FontAwesomeIcon icon={faCommentAlt} />
+        <FontAwesomeIcon icon={faCommentAlt} className="agora-chat-button--icon" />
       </div>
     )
   }

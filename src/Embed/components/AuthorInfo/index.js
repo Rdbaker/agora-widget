@@ -52,7 +52,7 @@ const AuthorInfo = ({
         <InfoPiece name="visited page" value={user_context.pageTitle} />
         <InfoPiece name="previous page" value={user_context.referrer || "Unknown"} />
       </InfoSection>
-      {user_context.location &&
+      {user_context.location && user_context.location.country &&
         <InfoSection title="Location">
           <InfoPiece name="country" value={user_context.location.country} />
           <InfoPiece name="city" value={user_context.location.city} />

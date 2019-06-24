@@ -1,12 +1,12 @@
 .agora-chat-button-container:hover {
-  box-shadow: 0 0 2px 4px rgba(200, 200, 200, 0.5);
+  box-shadow: 2px 3px 5px 2px rgba(0,0,0,0.5);
 }
 
 .agora-chat-button-container.transition {
   animation: bounce 0.1s ease 0s 1;
 }
 
-.agora-chat-button-container svg.svg-inline--fa {
+.agora-chat-button-container svg.agora-chat-button--icon {
   width: 24px;
   height: 24px;
 }
@@ -17,7 +17,7 @@
   margin-top: 20px;
   margin-left: 20px;
   background: rgb(163, 179, 245);
-  box-shadow: 0 0 2px 2px rgba(200, 200, 200, 0.5);
+  box-shadow: 2px 3px 3px 0px rgba(0,0,0,0.6);
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.5s ease;
