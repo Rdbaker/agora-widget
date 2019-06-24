@@ -6,6 +6,11 @@
   animation: bounce 0.1s ease 0s 1;
 }
 
+.agora-chat-button-container svg.svg-inline--fa {
+  width: 24px;
+  height: 24px;
+}
+
 .agora-chat-button-container {
   height: 60px;
   width: 60px;
@@ -17,6 +22,9 @@
   border-radius: 8px;
   transition: all 0.5s ease;
   animation: grow 0.3s ease 0s 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes bounce {

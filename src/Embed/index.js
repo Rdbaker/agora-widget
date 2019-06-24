@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { Provider } from 'react-redux';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import './index.css';
 import AgoraEmbed from './AgoraEmbed';
@@ -29,8 +27,6 @@ import socketEpic from 'modules/socket/epics';
 import { DEBUG } from 'shared/resources';
 
 document.domain = 'agorachat.org';
-
-library.add(faCheck, faLock);
 
 const mountSentry = () => {
   global.Sentry && global.Sentry.init && global.Sentry.init({ dsn: 'https://97578fdc26a2424083c16574e4d96091@sentry.io/1311809' });

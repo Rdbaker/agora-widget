@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentAlt } from '@fortawesome/pro-regular-svg-icons';
 
 import './style.css';
 
@@ -25,6 +27,7 @@ class ChatButton extends Component {
 
     return (
       <div onClick={this.transition} className={cx("agora-chat-button-container", { transition: isTransitioning })}>
+        <FontAwesomeIcon icon={faCommentAlt} />
       </div>
     )
   }
