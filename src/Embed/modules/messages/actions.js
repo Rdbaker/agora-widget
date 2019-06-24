@@ -1,9 +1,9 @@
 import { ActionTypes } from './constants';
 
 
-export const fetchMessages = ({ conversationId }) => ({
+export const fetchMessages = ({ conversationId, before }) => ({
   type: ActionTypes.FETCH_MESSAGES,
-  payload: { conversationId },
+  payload: { conversationId, before },
 })
 
 export const fetchMessagesPending = ({ conversationId }) => ({

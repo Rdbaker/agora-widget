@@ -4,6 +4,7 @@ import Button from 'components/shared/Button';
 import Composer from 'containers/Composer';
 import Header from 'containers/Header';
 import MessageGroup from 'containers/MessageGroup';
+import LoadingDots from 'components/shared/LoadingDots';
 
 import './style.css';
 
@@ -72,11 +73,18 @@ class SingleConversation extends Component {
     const {
       messageGroups,
       isLoggedIn,
+      fetchConversationMessages,
+      conversationId,
+      messagesFetchPending,
     } = this.props;
+
+    const numMessages = messageGroups.reduce((prevLength, group) => prevLength + group.length, 0);
 
     return (
       <Fragment>
         <div className="agora-single-conversation-messages--container">
+          {messagesFetchPending && <div className="agora-single-conversation-show-more--loading">Loading<LoadingDots /></div>}
+          {numMessages % 35 === 0 && <div className="agora-single-conversation-message-show-more" onClick={() => fetchConversationMessages(conversationId, messageGroups[0][0].created_at)}>Show more</div>}
           {messageGroups.map((messageGroup, i) => {
             const group = <MessageGroup group={messageGroup} key={i} />;
             if (i === 0) {

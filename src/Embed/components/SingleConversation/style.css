@@ -70,3 +70,28 @@
 .agora-single-conversation-date-break--container {
   margin-top: 12px;
 }
+
+.agora-single-conversation-message-show-more:hover {
+  color: lightslategray;
+}
+
+.agora-single-conversation-message-show-more {
+  color: blue;
+  font-size: 12px;
+  margin: 0 auto;
+  display: block;
+  width: 70px;
+  text-align: center;
+  margin: 6px auto 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.agora-single-conversation-show-more--loading {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 6px 0 12px;
+  font-size: 12px;
+  color: #888;
+}
