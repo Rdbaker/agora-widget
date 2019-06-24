@@ -77,7 +77,46 @@ class SingleConversation extends Component {
     return (
       <Fragment>
         <div className="agora-single-conversation-messages--container">
-          {messageGroups.map((messageGroup, i) => <MessageGroup group={messageGroup} key={i} />)}
+          {messageGroups.map((messageGroup, i) => {
+            const group = <MessageGroup group={messageGroup} key={i} />;
+            if (i === 0) {
+              const firstMessage = messageGroup[0];
+              if (!firstMessage) return group;
+
+              const sentDate = new Date(Date.parse(`${firstMessage.created_at}Z`));
+              return (
+                <div key={i}>
+                  <div>
+                    <div className="agora-single-conversation-date-break--line"></div>
+                    <div className="agora-single-conversation-date-break--date">{sentDate.toDateString()}</div>
+                  </div>
+                  {group}
+                </div>
+              );
+            } else {
+              const lastGroup = messageGroups[i - 1];
+              const lastFirstMessage = lastGroup[0];
+              const firstMessage = messageGroup[0]
+              if (!firstMessage || !lastFirstMessage) return group;
+
+              const firstMessageSentDate = new Date(Date.parse(`${firstMessage.created_at}Z`));
+              const lastFirstMessageSentDate = new Date(Date.parse(`${lastFirstMessage.created_at}Z`));
+
+              if (firstMessageSentDate.getDate() !== lastFirstMessageSentDate.getDate()) {
+                return (
+                  <div key={i}>
+                    <div className="agora-single-conversation-date-break--container">
+                      <div className="agora-single-conversation-date-break--line"></div>
+                      <div className="agora-single-conversation-date-break--date">{firstMessageSentDate.toDateString()}</div>
+                    </div>
+                    {group}
+                  </div>
+                );
+              } else {
+                return group;
+              }
+            }
+          })}
         </div>
         <div className="agora-single-conversation-composer--container">
           {isLoggedIn && <Composer />}

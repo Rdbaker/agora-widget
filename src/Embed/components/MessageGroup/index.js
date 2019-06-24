@@ -38,7 +38,7 @@ class MessageGroup extends Component {
           </div>
         </div>
         <div className="message-group-body--container">
-          {group.map(message => <div className="message-group-message-body">{message.body}</div>)}
+          {group.map(message => <div className="message-group-message-body" key={message.id}>{message.body}</div>)}
         </div>
       </div>
     )

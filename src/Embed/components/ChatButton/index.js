@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
+import cx from 'classnames';
 
 import './style.css';
 
-const waitForAnimationThenOpen = (openChat, conversationId) => {
-  return () => setTimeout(() => openChat(conversationId), 60);
+
+class ChatButton extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isTransitioning: false,
+    };
+  }
+
+  transition = () => {
+    this.setState({ isTransitioning: true },
+    () => setTimeout(() => this.props.openChat(this.props.conversationId), 80))
+  }
+
+  render() {
+    const {
+      isTransitioning,
+    } = this.state;
+
+    return (
+      <div onClick={this.transition} className={cx("agora-chat-button-container", { transition: isTransitioning })}>
+      </div>
+    )
+  }
 }
 
-const ChatButton = ({
-  openChat,
-  conversationId,
-}) => (
-  <div onClick={waitForAnimationThenOpen(openChat, conversationId)} className="agora-chat-button-container">
-  </div>
-);
 
 export default ChatButton;

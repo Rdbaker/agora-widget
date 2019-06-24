@@ -1,6 +1,7 @@
 import { ofType, combineEpics } from 'redux-observable';
 import { flatMap, startWith, catchError, pluck, map } from 'rxjs/operators';
 import { of, from } from 'rxjs';
+import { path } from 'ramda';
 
 import { MessagesAPI } from 'api/messages';
 import * as MessageActions from './actions';
@@ -28,7 +29,7 @@ const sendMessage = (action$, store$) => action$.pipe(
   pluck('payload'),
   map(msg => createBeforeServerMessage(msg, store$.value.shim.userContext)),
   flatMap((message) =>
-    from(MessagesAPI.sendMessage(message.conversation_id, message))
+    from(MessagesAPI.sendMessage(message.conversation_id, message, path(['auth', 'jwt', 'data'], store$.value)))
       .pipe(
         flatMap((response) => from(response.json())),
         flatMap(({ data }) => of(MessageActions.sendMessageSuccess({ conversationId: message.conversation_id, message: data }))),
