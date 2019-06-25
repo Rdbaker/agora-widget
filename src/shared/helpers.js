@@ -7,7 +7,7 @@ export const expireToken = () => {
 export const getCookie = () => {
   const startIndex = document.cookie.indexOf(COOKIE_NAME);
   if (startIndex === -1) {
-    return null;
+    return getCookieFromLocalStorage();
   }
   const startSlice = startIndex + COOKIE_NAME.length + 1;
   const endIndex = document.cookie.slice(startIndex).indexOf(';');
@@ -18,12 +18,25 @@ export const getCookie = () => {
   }
 };
 
+const getCookieFromLocalStorage = () => {
+  try {
+    return localStorage.getItem(COOKIE_NAME);
+  } catch (err) {
+    return null;
+  }
+}
+
 export const setCookie = ({ token }) => {
   const expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + 7);
 
   const cookie = `${COOKIE_NAME}=${token};expires=${expireDate.toGMTString()};path=/;domain=${document.domain}`;
   document.cookie = cookie;
+  try {
+    localStorage.setItem(COOKIE_NAME, token);
+  } catch (err) {
+    console.info('agora could not store token to localStorage');
+  }
 };
 
 export const isMobile = () => window.innerWidth < 600;
