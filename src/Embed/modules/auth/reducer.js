@@ -11,6 +11,11 @@ const defaultState = {
   }
 };
 
+const setToken = (newState, { token }) => {
+  newState.jwd.data = token;
+  return newState;
+}
+
 const loginSuccess = (newState, { token }) => {
   newState.jwt.data = token;
   newState.jwt.status = ActionTypes.LOGIN_SUCCESS;
@@ -56,8 +61,10 @@ const signupSuccess = (newState, { token }) => {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case ActionTypes.SET_TOKEN:
+      return produce(state, draftState => setToken(draftState, action.payload));
     case ActionTypes.LOGIN_SUCCESS:
-      return produce(state, draftState => loginSuccess(draftState, action.payload))
+      return produce(state, draftState => loginSuccess(draftState, action.payload));
     case ActionTypes.LOGIN_FAILED:
       return produce(state, draftState => loginFailed(draftState, action.payload))
     case ActionTypes.SIGNUP_SUCCESS:
