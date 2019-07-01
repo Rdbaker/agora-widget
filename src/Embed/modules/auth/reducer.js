@@ -1,6 +1,8 @@
-import { ActionTypes } from 'modules/auth/constants';
 import produce from 'immer';
 import { flatten } from 'ramda';
+
+import { ActionTypes } from 'modules/auth/constants';
+import *  as SharedEventTypes from 'shared/eventTypes';
 
 
 const defaultState = {
@@ -11,8 +13,8 @@ const defaultState = {
   }
 };
 
-const setToken = (newState, { token }) => {
-  newState.jwd.data = token;
+const setToken = (newState, token) => {
+  newState.jwt.data = token;
   return newState;
 }
 
@@ -61,6 +63,7 @@ const signupSuccess = (newState, { token }) => {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case SharedEventTypes.GET_CURRENT_USER_VIA_JWT:
     case ActionTypes.SET_TOKEN:
       return produce(state, draftState => setToken(draftState, action.payload));
     case ActionTypes.LOGIN_SUCCESS:
