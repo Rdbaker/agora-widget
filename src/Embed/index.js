@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { Provider } from 'react-redux';
+import * as Sentry from '@sentry/browser';
 
 import './index.css';
 import AgoraEmbed from './AgoraEmbed';
@@ -29,7 +30,7 @@ import { DEBUG } from 'shared/resources';
 document.domain = 'agorachat.org';
 
 const mountSentry = () => {
-  global.Sentry && global.Sentry.init && global.Sentry.init({ dsn: 'https://97578fdc26a2424083c16574e4d96091@sentry.io/1311809' });
+  Sentry.init({ dsn: 'https://53c81c887dab4b1b8ab6d4f72fd4d1a3@sentry.io/1498856' });
 };
 setTimeout(mountSentry, 0);
 
