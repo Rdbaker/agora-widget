@@ -23,6 +23,7 @@ const ConversationContainer = ({
   setNotifyNewMessage,
   messagesFetchPending,
   fetchConversationMessages,
+  conversationId,
 }) => {
   const numMessages = messageGroups.reduce((prevLength, group) => prevLength + group.length, 0);
   const ref = useRef();
