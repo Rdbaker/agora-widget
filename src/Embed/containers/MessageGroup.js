@@ -10,6 +10,7 @@ import { IframeViewTypes } from 'modules/ui/constants';
 
 const mapStateToProps = (state, props) => ({
   author: getUser(state, path(['group', '0', 'author_id'], props)),
+  authorIsUser: path(['group', '0', 'author_type'], props) === 'USER',
 });
 
 const mapDispatchToProps = dispatch => ({

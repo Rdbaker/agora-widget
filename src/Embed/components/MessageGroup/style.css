@@ -9,6 +9,15 @@
   color: steelblue;
 }
 
+.message-group-header--author.is-user:hover {
+  text-decoration: none;
+}
+
+.message-group-header--author.is-user {
+  color: var(--color-blue-4);
+  cursor: initial;
+}
+
 .message-group-header--author {
   font-size: 12px;
   color: blue;

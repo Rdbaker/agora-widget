@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 
 import './style.css';
 
@@ -19,6 +20,7 @@ class MessageGroup extends Component {
       group,
       author,
       showAuthorInfo,
+      authorIsUser,
     } = this.props;
 
     const firstMessage = group[0];
@@ -30,8 +32,8 @@ class MessageGroup extends Component {
     return (
       <div className="message-group--container">
         <div className="message-group-header--container">
-          <div className="message-group-header--author" onClick={() => showAuthorInfo(firstMessage)}>
-            {author.username}
+          <div className={cx("message-group-header--author", { 'is-user': authorIsUser })} onClick={() => !authorIsUser && showAuthorInfo(firstMessage)}>
+            {author.username}{authorIsUser && ` - Admin`}
           </div>
           <div className="message-group-header--time">
             {(new Date(firstMessageCreatedAt)).toLocaleTimeString("default", { hour: "2-digit", minute: "2-digit" })}
