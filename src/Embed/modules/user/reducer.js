@@ -15,9 +15,11 @@ const defaultState = {
 };
 
 const receiveBulkUsers = (newState, users) => {
-  users.forEach(user => {
-    newState.byId[user.id] = user;
-  });
+  if (users) {
+    users.forEach(user => {
+      newState.byId[user.id] = user;
+    });
+  }
   return newState;
 }
 
